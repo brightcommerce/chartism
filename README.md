@@ -34,7 +34,46 @@ And add to your `application.css`
 
 ## Usage
 
-TODO: Write usage instructions here
+An example Linechart Model
+
+```ruby
+class ExampleLineChart
+  include Chartism::Line
+
+  def initialize
+    @area = true
+  end
+
+  options do
+    points false
+    smooth false
+
+    area do
+      @area
+    end
+  end
+
+  labels do
+    %w(Mon Tue Wed Thu Fri)
+  end
+
+  series do
+    [5, 2, 4, 2, 0]
+  end
+
+  series do
+    [6, 3, 1, 2, 4]
+  end
+end
+```
+
+Then use the following in a view:
+
+```ruby
+chart ExampleLineChart.new, class: ['ct-perfect-fourth']
+```
+
+`ExampleLineChart.new` should preferbly be in a controller or other model.
 
 ## Development
 
@@ -44,7 +83,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/chartism/fork )
+1. Fork it ( https://github.com/darksecond/chartism/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

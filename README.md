@@ -1,8 +1,7 @@
 # Chartism
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/chartism`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This library is designed for making charts with ease. It provides a clean DSL to describe charts.
+It is base on the great chartist.js library.
 
 ## Installation
 
@@ -69,8 +68,8 @@ end
 
 Then use the following in a view:
 
-```ruby
-chart ExampleLineChart.new, class: ['ct-perfect-fourth']
+```erb
+<%= chart ExampleLineChart.new, class: ['ct-perfect-fourth'] %>
 ```
 
 `ExampleLineChart.new` should preferbly be in a controller or other model.

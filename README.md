@@ -20,6 +20,18 @@ Or install it yourself as:
 
     $ gem install chartism
 
+Add to your `application.js`
+
+```
+//= require chartist
+```
+
+And add to your `application.css`
+
+```
+*= require chartist.min
+```
+
 ## Usage
 
 TODO: Write usage instructions here

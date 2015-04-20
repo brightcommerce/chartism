@@ -9,13 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tim Peters"]
   spec.email         = ["mail@darksecond.nl"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A ruby chart library based on chartist.js}
+  spec.description   = %q{A library to create beautiful charts using a clean DSL and chartist.js}
+  spec.homepage      = "http://github.com/darksecond/chartism"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

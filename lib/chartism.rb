@@ -1,5 +1,5 @@
 require "chartism/version"
+require "chartism/engine" if defined?(Rails)
 
 module Chartism
-  # Your code goes here...
 end

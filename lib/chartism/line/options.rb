@@ -10,7 +10,7 @@ module Chartism
       end
 
       def points value=nil, &block
-        @options[:showPoint] = value
+        @options[:showPoint] = value unless value.nil?
         @options[:showPoint] = instance_eval(&block) if block_given?
       end
 

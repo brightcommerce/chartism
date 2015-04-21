@@ -7,16 +7,7 @@ module Chartism
       define_option :smooth, :lineSmooth
       define_option :area, :showArea
       define_option :line, :showLine
-
-      attr_reader :options
-
-      def initialize
-        @options = {
-          showPoint: true,
-          lineSmooth: true,
-          showArea: false
-        }
-      end
+      define_option :full_width, :fullWidth
     end
   end
 end

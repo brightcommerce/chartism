@@ -2,6 +2,7 @@
 
 [![Dependency Status](https://gemnasium.com/Darksecond/chartism.svg)](https://gemnasium.com/Darksecond/chartism)
 [![Gem Version](https://badge.fury.io/rb/chartism.svg)](http://badge.fury.io/rb/chartism)
+[![Code Climate](https://codeclimate.com/github/Darksecond/chartism/badges/gpa.svg)](https://codeclimate.com/github/Darksecond/chartism)
 
 This library is designed for making charts with ease. It provides a clean DSL to describe charts.
 It is base on the great chartist.js library.

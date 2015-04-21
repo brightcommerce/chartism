@@ -62,7 +62,7 @@ module Chartism
     end
 
     def options
-      Docile.dsl_eval(Options.new, &(self.class.options || ->{}) ).options
+      Docile.dsl_eval(Line::Options.new, &(self.class.options || ->{}) ).options
     end
   end
 end

@@ -70,6 +70,27 @@ class ExampleLineChart
 end
 ```
 
+An example pie chart
+
+```ruby
+class ExamplePieChart
+  include Chartism::Pie
+
+  options do
+    donut true
+    width 80
+  end
+
+  labels do
+    %w(Mon Tue Wed Thu Fri)
+  end
+
+  series do
+    [5, 2, 4, 2, 7]
+  end
+end
+```
+
 Then use the following in a view:
 
 ```erb

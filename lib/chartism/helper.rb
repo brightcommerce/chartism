@@ -2,6 +2,7 @@ require 'securerandom'
 
 module Chartism
   module Helper
+    # Chartism should be an object
     # Options include:
     #   - id
     #   - class
@@ -17,18 +18,19 @@ module Chartism
       (function() {
         var data = #{data_json};
         var options = #{options_json};
-        new Chartist.#{chart_type(chartism)}("##{id}", data, options);
+        new Chartist.#{Chartism.chart_type(chartism.class)}("##{id}", data, options);
       })();
       </script>
       ].html_safe
     end
 
-    private
-
-    def chart_type chartism
-      return 'Line' if chartism.class.include? Chartism::Line
-      return 'Pie' if chartism.class.include? Chartism::Pie
-      fail 'unknown Chartism'
+    def remote_chart klass, options={}
+      classes = ( ['ct-chart'] + Array(options[:class]) ).join(' ')
+      id = options.fetch :id, "chartism-#{SecureRandom.hex(6)}"
+      url = chartism.chart_path(klass.to_s)
+      %Q[
+      <div id="#{id}" class="#{classes}" data-chartism-url="#{url}"></div>
+      ].html_safe
     end
   end
 end

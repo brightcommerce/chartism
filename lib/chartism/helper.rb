@@ -27,7 +27,7 @@ module Chartism
     def remote_chart klass, options={}
       classes = ( ['ct-chart'] + Array(options[:class]) ).join(' ')
       id = options.fetch :id, "chartism-#{SecureRandom.hex(6)}"
-      url = chartism.chart_path(klass.to_s)
+      url = Chartism::Engine.routes.url_helpers.chart_path(klass.to_s)
       %Q[
       <div id="#{id}" class="#{classes}" data-chartism-url="#{url}"></div>
       ].html_safe

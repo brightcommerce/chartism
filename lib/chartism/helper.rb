@@ -28,9 +28,7 @@ module Chartism
       classes = ( ['ct-chart'] + Array(options[:class]) ).join(' ')
       id = options.fetch :id, "chartism-#{SecureRandom.hex(6)}"
       url = Chartism::Engine.routes.url_helpers.chart_path(klass.to_s)
-      %Q[
-      <div id="#{id}" class="#{classes}" data-chartism-url="#{url}"></div>
-      ].html_safe
+      content_tag :div, '', id: id, class: classes, data: {'chartism-url' => url }
     end
   end
 end

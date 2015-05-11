@@ -1,33 +1,33 @@
 require 'docile'
 
 module Chartism
-  module Line
-    extend Chart
-
-    def self.included base
-      base.extend ClassMethods
+  class Line
+    def initialize
+      @series = []
     end
 
-    module ClassMethods
-      extend Chart::ClassMethods
-
-      define_option :labels
-      define_array_option :series
-      define_block_option :options, ->{}
+    def options &block
+      @options = Docile.dsl_eval(Line::Options.new, &block).options if block
+      @options
     end
 
-    define_option :labels
-    define_array_option :series
+    def labels value=nil, &block
+      @labels = ->{value} unless value.nil?
+      @labels = block if block
+      @labels
+    end
+
+    def series value=nil, &block
+      @series << ->{value} unless value.nil?
+      @series << block if block
+      @series
+    end
 
     def data
       {
-        labels: labels,
-        series: series
+        labels: labels.call,
+        series: series.map(&:call)
       }
-    end
-
-    def options
-      Docile.dsl_eval(Line::Options.new, &self.class.options).options
     end
   end
 end

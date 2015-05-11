@@ -1,33 +1,29 @@
 require 'docile'
 
 module Chartism
-  module Pie
-    extend Chart
-
-    def self.included base
-      base.extend ClassMethods
+  class Pie
+    def options &block
+      @options = Docile.dsl_eval(Pie::Options.new, &block).options if block
+      @options
     end
 
-    module ClassMethods
-      extend Chart::ClassMethods
-
-      define_option :labels
-      define_option :series
-      define_block_option :options, ->{}
+    def labels value=nil, &block
+      @labels = ->{value} unless value.nil?
+      @labels = block if block
+      @labels
     end
 
-    define_option :labels
-    define_option :series
+    def series value=nil, &block
+      @series = ->{value} unless value.nil?
+      @series = block if block
+      @series
+    end
 
     def data
       {
-        labels: labels,
-        series: series
+        labels: labels.call,
+        series: series.call
       }
-    end
-
-    def options
-      Docile.dsl_eval(Pie::Options.new, &self.class.options).options
     end
   end
 end

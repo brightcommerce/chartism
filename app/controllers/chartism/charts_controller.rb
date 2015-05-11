@@ -1,12 +1,11 @@
 module Chartism
   class ChartsController < ActionController::Base
     def show
-      klass = Chartism.chartism params[:id]
-      return render status: 404 unless klass
+      chart = Chartism.chartism params[:id]
+      raise ActionController::RoutingError.new('Not Found') unless chart
 
-      chart = klass.new
       render json: {
-        type: Chartism.chart_type(klass),
+        type: Chartism.chart_type(chart),
         options: chart.options,
         data: chart.data
       }

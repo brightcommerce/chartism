@@ -46,20 +46,11 @@ mount Chartism::Engine => '/chartism'
 An example Linechart Model
 
 ```ruby
-class ExampleLineChart
-  include Chartism::Line
-
-  def initialize
-    @area = true
-  end
-
+Chartism.line_chart :a_line_chart do
   options do
     points false
     smooth false
-
-    area do
-      @area
-    end
+    area true
   end
 
   labels do
@@ -79,9 +70,7 @@ end
 An example pie chart
 
 ```ruby
-class ExamplePieChart
-  include Chartism::Pie
-
+Chartism.pie_chart :a_pie_chart do
   options do
     donut true
     width 80
@@ -100,23 +89,7 @@ end
 Then use the following in a view:
 
 ```erb
-<%= chart ExampleLineChart.new, class: ['ct-perfect-fourth'] %>
-```
-
-`ExampleLineChart.new` should preferbly be in a controller or other model.
-
-## Remote Charts
-
-You can also register your Chart classes with `Chartist.register`. For example:
-
-```ruby
-Chartist.register ExampleLineChart
-```
-
-Then you can use remote charts in your view with:
-
-```erb
-<%= remote_chart ExampleLineChart, class: ['ct-perfect-fourth'] %>
+<%= chart :a_line_chart, class: ['ct-perfect-fourth'] %>
 ```
 
 ## Development

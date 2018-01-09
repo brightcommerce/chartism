@@ -8,6 +8,10 @@ require 'chartism/pie/options'
 require "chartism/engine" if defined?(Rails)
 
 module Chartism
+  def self.charts
+    @charts
+  end
+  
   def self.line_chart name, &block
     self.register name, Docile.dsl_eval(Line.new, &block)
   end
